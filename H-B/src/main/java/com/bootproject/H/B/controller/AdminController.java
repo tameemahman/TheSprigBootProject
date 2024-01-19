@@ -4,14 +4,14 @@ import com.bootproject.H.B.dto.produtDTO;
 import com.bootproject.H.B.model.Category;
 import com.bootproject.H.B.service.CategoryService;
 import com.bootproject.H.B.service.ProductService;
+import jakarta.mail.Multipart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Optional;
 
 @Controller
@@ -82,4 +82,11 @@ model.addAttribute("categories", categoryService.getAllCategory());
         return "productsAdd";
 
     }
+    @PostMapping ("/admin/products/add")
+    public String productAddPost(@ModelAttribute ("productDTO")ProductDTO productDTO,
+                                 @RequestParam("productImage")MultipartFile file,
+                                 @RequestParam("imgName")String imgName) throws IOException{
+        return "redirect:/admin/products";
+    }
 }
+
