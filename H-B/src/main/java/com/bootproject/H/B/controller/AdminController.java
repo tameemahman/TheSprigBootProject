@@ -1,10 +1,11 @@
 package com.bootproject.H.B.controller;
 
-import com.bootproject.H.B.dto.produtDTO;
+import com.bootproject.H.B.dto.ProductDTO;
 import com.bootproject.H.B.model.Category;
+import com.bootproject.H.B.model.Product;
+import com.bootproject.H.B.repository.ProductRepository;
 import com.bootproject.H.B.service.CategoryService;
 import com.bootproject.H.B.service.ProductService;
-import jakarta.mail.Multipart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,14 +13,21 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 @Controller
 public class AdminController {
+    public static  String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/productImages";
     @Autowired
     CategoryService categoryService;
     @Autowired
     ProductService productService;
+
+    @Autowired
+    ProductRepository productRepository;
 
 
     @GetMapping("/admin")
@@ -67,9 +75,9 @@ public class AdminController {
 
 
     //Product Section
-    @GetMapping("admin/products")
+    @GetMapping("/admin/products")
     public String products(Model model) {
-        model.addAttribute("products",productService.getAllProduct());
+        model.addAttribute("products", productService.getAllProduct());
 
         return "products";
 
@@ -77,15 +85,34 @@ public class AdminController {
 
     @GetMapping("admin/products/add")
     public String productsAddGet(Model model) {
-        model.addAttribute("productDTO",new produtDTO());
-model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("productDTO", new ProductDTO());
+        model.addAttribute("categories", categoryService.getAllCategory());
         return "productsAdd";
 
     }
-    @PostMapping ("/admin/products/add")
-    public String productAddPost(@ModelAttribute ("productDTO")ProductDTO productDTO,
-                                 @RequestParam("productImage")MultipartFile file,
-                                 @RequestParam("imgName")String imgName) throws IOException{
+
+    @PostMapping("/admin/products/add")
+    public String productAddPost(@ModelAttribute("productDTO") ProductDTO productDTO,
+                                 @RequestParam("productImage") MultipartFile file,
+                                 @RequestParam("imgName") String imgName) throws IOException {
+        Product product = new Product();
+        product.setId(productDTO.getId());
+        product.setName(productDTO.getName());
+        product.setCategory(categoryService.getCategoryById(productDTO.getCategoryId()).get());
+        product.setPrice(productDTO.getPrice());
+        product.setWeight(productDTO.getWeight());
+        product.setDescription(productDTO.getDescription());
+        String imageUUID;
+        if (!file.isEmpty()) {
+            imageUUID = file.getOriginalFilename();
+            Path fileNameAndPath = Paths.get(uploadDir, imageUUID);
+            Files.write(fileNameAndPath, file.getBytes());
+        } else {
+            imageUUID = imgName;
+        }
+        product.setImageName(imageUUID);
+        productRepository.save(product);
+
         return "redirect:/admin/products";
     }
 }

@@ -1,12 +1,11 @@
 package com.bootproject.H.B.dto;
 
-import com.bootproject.H.B.model.Category;
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 
-public class produtDTO {
+public class ProductDTO {
 
 
     private Long id;
