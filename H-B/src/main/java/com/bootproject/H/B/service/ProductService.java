@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -17,11 +18,15 @@ public class ProductService {
 
     public List<Product> getAllProduct() {
         return productRepository.findAll();
-
     }
-
-    public void removeProductById(long id) {
+    public void removeProductById(long id) {productRepository.deleteById(id);
     }
+    public Optional<Product> getproductById(long id){
+        return productRepository.findById(id);
+    }
+//public  List<Product> getAllProductsByCategoryId (int id){
+//        return productRepository.findAllProductsbyCategory_Id(id);
+//}
 
 
 }
