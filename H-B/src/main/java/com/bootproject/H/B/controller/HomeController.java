@@ -1,6 +1,7 @@
 package com.bootproject.H.B.controller;
 
 
+import com.bootproject.H.B.global.GlobalData;
 import com.bootproject.H.B.repository.ProductRepository;
 import com.bootproject.H.B.service.CategoryService;
 import com.bootproject.H.B.service.ProductService;
@@ -31,6 +32,7 @@ public  String home (){
 
     @GetMapping ({"/", "/home"})
     public String home(Model model){
+        model.addAttribute("cartCount", GlobalData.cart.size());
         return "index";
     }
 
@@ -38,20 +40,21 @@ public  String home (){
     public String shop(Model model){
        model.addAttribute("categories", categoryService.getAllCategory());
        model.addAttribute("products", productService.getAllProduct());
+        model.addAttribute("cartCount",GlobalData.cart.size());
        return "shop";
     }
     @GetMapping ("/shop/category/{id}")
     public String shopByCategory(Model model, @PathVariable int id){
         model.addAttribute("categories", categoryService.getAllCategory());
 //        model.addAttribute("products", productRepository.getByCategory(id));
+        model.addAttribute("cartCount",GlobalData.cart.size());
         return "shop";
     }
     @GetMapping ("/shop/viewproduct/{id}")
     public String viewProduct (Model model, @PathVariable int id){
         model.addAttribute("product", productService.getproductById(id).get());
-
+        model.addAttribute("cartCount",GlobalData.cart.size());
         return "viewProduct";
     }
-
 
 }
