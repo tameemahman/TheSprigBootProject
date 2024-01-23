@@ -2,32 +2,61 @@ package com.bootproject.H.B.model;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
-@Table(name= "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  int id;
 
-    @NotNull
+    @Column(unique = true, nullable = false)
+    private String email;
+
     @Column(nullable = false)
-    private String firstName;
+    private String password;
 
-    private  String lastName;
+    @Column(nullable = false)
+    private String name;
+    @Column()
+    private String cellNo;
 
-    @Column(nullable = false, unique = true)
-    @NotNull
-//    @Email(message = "{errors.invalid_email}")
-    private  String email;
-    @NotNull
-    private  String password;
+    private String gender;
+
+    private Date dob;
+    private String image;
+    private  boolean isEnable;
 
 
-//    private List<Role> roles;
+    @ManyToMany(
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles=new HashSet<>();
 
 
+    public void  addRole(Role role){
+
+        this.roles.add(role);
+    }
+
+    public User(String email, String password, String name) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+    }
 }
