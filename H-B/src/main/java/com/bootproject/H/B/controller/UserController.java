@@ -67,8 +67,7 @@ public class UserController {
         return  "register";
     }
 
-    @GetMapping("/public/display")
-    public ResponseEntity<byte[]> displayImage(@RequestParam("id") int id) throws IOException {
+    @GetMapping("/public/display")  public ResponseEntity<byte[]> displayImage(@RequestParam("id") int id) throws IOException {
         Optional<User> userOptional = userRepo.findById(id);
 
         if (userOptional.isPresent()) {
