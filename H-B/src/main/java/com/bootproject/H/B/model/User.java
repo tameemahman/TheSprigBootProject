@@ -34,7 +34,9 @@ public class User {
     private String gender;
 
     private Date dob;
+
     private String image;
+
     private  boolean isEnable;
 
 

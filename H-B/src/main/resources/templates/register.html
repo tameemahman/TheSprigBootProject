@@ -47,25 +47,34 @@
         <p>Please fill out this to register</p>
         <form th:action="@{/public/user/save}" th:object="${user}" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" name="firstName" id="firstName" required placeholder="Your Firstname" class="form-control form-control-lg">
+                <label for="firstName">Name</label>
+                <input type="text" name="name" id="firstName" required placeholder="Your Firstname" class="form-control form-control-lg">
             </div>
             <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" id="lastName" required placeholder="Your Lastname" class="form-control form-control-lg">
+                <label for="lastName">Email</label>
+                <input type="email" name="email" id="lastName" required placeholder="Your Lastname" class="form-control form-control-lg">
             </div>
             <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control form-control-lg" required minlength="6" placeholder="Email" name="email" id="email"
+                <label for="email">Password</label>
+                <input type="password" class="form-control form-control-lg" required minlength="4" placeholder="*******" name="password" id="email"
                        aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
-                    anyone else.</small>
+
             </div>
+
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control form-control-lg" required placeholder="Password" name="password"
-                       id="password">
+                <label>Cell </label>
+                <input type="text" th:field="*{cellNo}"><br>
             </div>
+
+            <div class="form-group">
+
+
+                <label>User Image:</label>
+                <input type="file" th:field="*{image}" accept="image/*" onchange="previewImage()"><br>
+                <img th:if="${user.image ne null}" th:src="@{/assets/images/users/{filename}(filename=${user.image})}" alt="User Image" style="max-width: 100%;"><br>
+                <img id="imagePreview" src="#" alt="User Image" style="display: none; width: 100px;">
+            </div>
+
 
             <input type="submit" value="Register" class="btn btn-primary btn-block">
             <span style="margin-top: 10px">Already have an account <a class="linkControl" href="./login.html"

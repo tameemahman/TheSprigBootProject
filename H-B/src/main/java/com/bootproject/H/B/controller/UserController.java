@@ -64,7 +64,7 @@ public class UserController {
     @RequestMapping("public/user/saveform")
     public String userSaveForm(Model m){
         m.addAttribute("user", new User());
-        return  "saveuserform";
+        return  "register";
     }
 
     @GetMapping("/public/display")

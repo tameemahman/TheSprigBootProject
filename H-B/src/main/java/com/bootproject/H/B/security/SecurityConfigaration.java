@@ -62,7 +62,7 @@ public class SecurityConfigaration {
                         .loginPage("/login")
                         .usernameParameter("email")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/profile")
+                        .defaultSuccessUrl("/home")
                         .permitAll()
                 )
                 .logout(logout->logout
