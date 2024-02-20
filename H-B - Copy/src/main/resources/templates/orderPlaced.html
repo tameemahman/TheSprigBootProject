@@ -1,61 +1,90 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Order Placement</title>-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">-->
+<!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash; Navigation bar &ndash;&gt;-->
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--    &lt;!&ndash; Navbar content &ndash;&gt;-->
+<!--</nav>-->
+
+<!--<div class="container">-->
+<!--    &lt;!&ndash; Checkout form content &ndash;&gt;-->
+<!--    <div class="row mt-5">-->
+<!--        <div class="col-lg-8 mb-4">-->
+<!--            &lt;!&ndash; Billing details form &ndash;&gt;-->
+<!--            <div class="card wish-list pb-1">-->
+<!--                &lt;!&ndash; Form content &ndash;&gt;-->
+<!--            </div>-->
+<!--            &lt;!&ndash; End of Billing details form &ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="col-lg-4">-->
+<!--            &lt;!&ndash; Order summary &ndash;&gt;-->
+<!--            <div class="card mb-4">-->
+<!--                &lt;!&ndash; Summary content &ndash;&gt;-->
+<!--            </div>-->
+<!--            &lt;!&ndash; End of Order summary &ndash;&gt;-->
+
+<!--            &lt;!&ndash; Discount code &ndash;&gt;-->
+<!--            <div class="card mb-4">-->
+<!--                &lt;!&ndash; Discount code content &ndash;&gt;-->
+<!--            </div>-->
+<!--            &lt;!&ndash; End of Discount code &ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Payment Slip Section &ndash;&gt;-->
+<!--    <div class="card mt-5">-->
+<!--        <div class="card-body">-->
+<!--            <h5 class="card-title">Payment Slip</h5>-->
+<!--            <p class="card-text">Please make the payment using the provided details.</p>-->
+<!--            <ul class="list-group list-group-flush">-->
+<!--                <li class="list-group-item">Amount Payable: ৳<span th:text="${total}"></span></li>-->
+<!--                <li class="list-group-item">Shipping: Pathao</li>-->
+<!--                <li class="list-group-item">Total amount (including VAT): ৳<span th:text="${total}"></span></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; End of Payment Slip Section &ndash;&gt;-->
+<!--</div>-->
+
+<!--&lt;!&ndash; JavaScript includes &ndash;&gt;-->
+<!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>-->
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Placement</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Head and other parts remain unchanged -->
+
 <body>
+
 <!-- Navigation bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <!-- Navbar content -->
-</nav>
 
-<div class="container">
-    <!-- Checkout form content -->
-    <div class="row mt-5">
-        <div class="col-lg-8 mb-4">
-            <!-- Billing details form -->
-            <div class="card wish-list pb-1">
-                <!-- Form content -->
-            </div>
-            <!-- End of Billing details form -->
-        </div>
-        <div class="col-lg-4">
-            <!-- Order summary -->
-            <div class="card mb-4">
-                <!-- Summary content -->
-            </div>
-            <!-- End of Order summary -->
+<!-- Rest of your HTML content -->
 
-            <!-- Discount code -->
-            <div class="card mb-4">
-                <!-- Discount code content -->
-            </div>
-            <!-- End of Discount code -->
-        </div>
+<!-- Payment Slip Section -->
+<div class="card mt-5">
+    <div class="card-body">
+        <h5 class="card-title">Payment Slip</h5>
+        <p class="card-text">Please make the payment using the provided details.</p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Amount Payable: ৳<span th:text="${total}"></span></li>
+            <li class="list-group-item">Shipping: Pathao</li>
+            <li class="list-group-item">Total amount (including VAT): ৳<span th:text="${total}"></span></li>
+        </ul>
     </div>
-
-    <!-- Payment Slip Section -->
-    <div class="card mt-5">
-        <div class="card-body">
-            <h5 class="card-title">Payment Slip</h5>
-            <p class="card-text">Please make the payment using the provided details.</p>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Amount Payable: ৳<span th:text="${total}"></span></li>
-                <li class="list-group-item">Shipping: Pathao</li>
-                <li class="list-group-item">Total amount (including VAT): ৳<span th:text="${total}"></span></li>
-            </ul>
-        </div>
-    </div>
-    <!-- End of Payment Slip Section -->
 </div>
+<!-- End of Payment Slip Section -->
 
-<!-- JavaScript includes -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- Rest of your HTML content -->
+
 </body>
 </html>
