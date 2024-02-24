@@ -11,10 +11,6 @@ import { Stripe, StripeCardElement } from '@stripe/stripe-js';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent {
-total: any;
-submitPaymentForm() {
-throw new Error('Method not implemented.');
-}
   stripe: Stripe | null = null;
   card: StripeCardElement | null = null;
 
