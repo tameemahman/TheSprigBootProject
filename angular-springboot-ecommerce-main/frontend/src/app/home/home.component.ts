@@ -9,6 +9,7 @@ import { ProductService, Product } from 'src/app/services/product.service';
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
+portfolioItems: any;
 
   constructor(private productService: ProductService) { }
 
