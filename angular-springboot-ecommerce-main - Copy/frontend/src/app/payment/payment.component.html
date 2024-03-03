@@ -174,10 +174,21 @@
                                 <span><strong>৳{{ total }}</strong></span>
                             </li>
                         </ul>
+<<<<<<< HEAD
                         <form (ngSubmit)="submitPaymentForm()" method="post">
                             <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Pay Now</button>
                         </form>
                         
+=======
+                        <!-- <form (ngSubmit)="submitPaymentForm()" method="post">
+                          <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Pay Now</button>
+                      </form> -->
+                      <form #paymentForm="ngForm" (ngSubmit)="submitPaymentForm()" method="post">
+                        <!-- Your form fields here -->
+                        <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Pay Now</button>
+                    </form>
+                    
+>>>>>>> 88f6dabaffd1f83074ef5707a60f1ebd121e0043
                       
                     </div>
                 </div>
