@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver  # Use the recommended MySQL Driver
+    url: jdbc:mysql://localhost:3306/angularp  # Adjust host and port if needed
+    username: root
+    password: 1234
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL8Dialect  # Set the correct dialect for MySQL
+    hibernate:
+      ddl-auto: update  # Or configure DDL strategy based on your needs
+
+stripe:
+  secret-key: sk_test_51NiZKsLtTFoBOb8wTg4V2C3bJqrQ53qMHLusPXct6hp0O3yNtHXfEITKl7bLHNPRG7Egk28A5d1X7H4yoCvUl5kF00OP3VpgCr
