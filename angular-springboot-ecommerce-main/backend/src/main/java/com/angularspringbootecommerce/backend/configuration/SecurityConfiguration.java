@@ -62,6 +62,9 @@ public class SecurityConfiguration {
                     auth.requestMatchers("/api/v1/cart/**").permitAll();
                     auth.requestMatchers("/api/v1/payments/**").permitAll();
                     auth.requestMatchers("/api/v1/orders/**").permitAll();
+                    auth.requestMatchers("/api/v1/orders/**").permitAll();
+                    auth.requestMatchers("/ api/payment/save").permitAll();
+
                     auth.anyRequest().authenticated();
                 })
                 .oauth2ResourceServer(oauth2 -> oauth2

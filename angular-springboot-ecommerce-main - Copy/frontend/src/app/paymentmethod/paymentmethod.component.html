@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Method</title>
+</head>
+<body>
+<h2>Billing Details</h2>
+<form action="payment_process.php" method="post">
+
+    <!-- payment-form.component.html -->
+
+<h2>Billing Details</h2>
+<form (ngSubmit)="submitForm()" [formGroup]="billingForm">
+
+    <label for="first_name">First Name:</label><br>
+    <input type="text" id="first_name" formControlName="first_name" required><br><br>
+    
+    <label for="last_name">Last Name:</label><br>
+    <input type="text" id="last_name" formControlName="last_name" required><br><br>
+    
+    <label for="country">Country:</label><br>
+    <input type="text" id="country" formControlName="country" value="Bangladesh" readonly><br><br>
+    
+    <label for="address_line1">Address (Line 1):</label><br>
+    <input type="text" id="address_line1" formControlName="address_line1" required><br><br>
+    
+    <label for="address_line2">Address (Line 2):</label><br>
+    <input type="text" id="address_line2" formControlName="address_line2"><br><br>
+    
+    <label for="postcode">Postcode / ZIP:</label><br>
+    <input type="text" id="postcode" formControlName="postcode" required><br><br>
+    
+    <label for="city">Town / City:</label><br>
+    <input type="text" id="city" formControlName="city" value="Dhaka" readonly><br><br>
+    
+    <label for="phone">Phone:</label><br>
+    <input type="tel" id="phone" formControlName="phone" required><br><br>
+    
+    <label for="email">Email Address:</label><br>
+    <input type="email" id="email" formControlName="email" required><br><br>
+    
+    <label for="additional_info">Additional Information:</label><br>
+    <textarea id="additional_info" formControlName="additional_info"></textarea><br><br>
+    
+    <label for="amount_payable">Amount Payable (৳):</label><br>
+    <input type="text" id="amount_payable" formControlName="amount_payable" required><br><br>
+    
+    <label for="shipping">Shipping:</label><br>
+    <input type="text" id="shipping" formControlName="shipping" value="Pathao" readonly><br><br>
+    
+    <label for="total_amount">Total Amount (including VAT):</label><br>
+    <input type="text" id="total_amount" formControlName="total_amount" required><br><br>
+    
+    <input type="submit" value="Submit">
+</form>
+
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
