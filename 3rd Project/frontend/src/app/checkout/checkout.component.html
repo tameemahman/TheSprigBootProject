@@ -31,7 +31,9 @@
         <p>Total Price: ৳{{ totalPrice.toFixed(2) }}</p>
       </div>
       <div class="d-flex justify-content-end">
-        <a class="btn btn-primary" routerLink="/payment">Check Out</a>
+        <a class="btn btn-primary" (click)="redirectToPayment(totalPrice)">Check Out</a>
+
+
       </div>
     </div>
   </div>

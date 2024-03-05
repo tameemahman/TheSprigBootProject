@@ -1,23 +1,28 @@
 <div class="container text-center">
-    <h1 class="display-5">Orders</h1>
+  <h1 class="display-5">Orders</h1>
   <div class="row justify-content-center">
-    <div class="col-md-8">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Date Created</th>
-            <th>Total Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let order of orders">
-            <td>{{ order.id }}</td>
-            <td>{{ order.dateCreated }}</td>
-            <td>${{ order.total }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="col-md-8">
+          <table class="table table-bordered">
+              <thead>
+                  <tr>
+                      <th>Order ID</th>
+                      <th>Date Created</th>
+                      <th>Total Price</th>
+                      <th>Action</th> <!-- New column for buttons -->
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let order of orders">
+                      <td>{{ order.id }}</td>
+                      <td>{{ order.dateCreated }}</td>
+                      <td>৳{{ order.total }}</td>
+                      <td> <!-- New column for buttons -->
+                          <button style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;" (click)="removeOrder(order.id)">Remove</button>
+                          <button style="background-color: blue; color: white; border: none; padding: 5px 10px; cursor: pointer;" (click)="approveOrder(order.id)">Approve</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
   </div>
 </div>

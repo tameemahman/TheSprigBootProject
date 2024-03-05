@@ -32,6 +32,7 @@ public class OrderController {
 
     @PostMapping("/{userId}/checkout")
     public ResponseEntity<PaymentDto> checkout(@PathVariable Long userId, Authentication authentication) throws StripeException {
+
         CartDto cart = cartService.getCartByUserId(userId);
         BigDecimal totalPrice = cart.getTotalPrice();
         PaymentIntent paymentIntent = paymentService.createPaymentIntent(totalPrice);

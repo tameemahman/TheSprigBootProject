@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartItem, CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class CheckoutComponent implements OnInit {
   cartItems: any[] = [];
   totalPrice: number = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router:Router) {}
 
   ngOnInit() {
     console.log('Checkout component initialized.');
@@ -59,4 +60,10 @@ export class CheckoutComponent implements OnInit {
       );
     }
   }
+
+
+  redirectToPayment(totalPrice: number) {
+    this.router.navigate(['/payment', totalPrice]);
+  }
+
 }

@@ -8,6 +8,12 @@ import { OrderService } from '../services/order.service';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
+approveOrder(arg0: any) {
+throw new Error('Method not implemented.');
+}
+removeOrder(arg0: any) {
+throw new Error('Method not implemented.');
+}
   orders: any[] = [];
 
   constructor(private orderService: OrderService) {}

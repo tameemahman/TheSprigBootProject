@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'product/:id', component: ProductComponent },
   { path: 'user', component: UserComponent },
-  { path: 'payment', component: PaymentComponent },
+  { path: 'payment/:totalPrice', component: PaymentComponent },
   { path: 'order', component: OrderComponent }
 ];
 
