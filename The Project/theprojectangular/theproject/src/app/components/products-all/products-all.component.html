@@ -1,0 +1,18 @@
+<div class="container">
+    <h1>All Products</h1>
+  
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let product of products">
+            <span><strong>Name:</strong> {{ product.name }}</span>
+            <span><strong>Description:</strong> {{ product.description }}</span>
+            <span><strong>Price:</strong> {{ product.price }}</span>
+            <span><strong>Quantity Available:</strong> {{ product.quantityAvailable }}</span>
+            <img *ngIf="product.imageURL" [src]="product.imageURL" alt="Product Image" class="img-thumbnail">
+            <span><strong>Category:</strong> {{ product.category?.name }}</span>
+
+            <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
+
+    
+          </li>
+    </ul>
+  </div>

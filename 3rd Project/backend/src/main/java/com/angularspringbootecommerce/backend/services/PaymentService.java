@@ -18,13 +18,20 @@ public class PaymentService {
     private String stripeSecretKey;
 
     public PaymentIntent createPaymentIntent(BigDecimal amount) throws StripeException {
+        // Set the Stripe API key
         Stripe.apiKey = stripeSecretKey;
 
+        // Create parameters for the payment intent
         Map<String, Object> params = new HashMap<>();
-        params.put("amount", amount.multiply(BigDecimal.valueOf(100)).intValue());
-        params.put("currency", "bdt");
-        params.put("payment_method_types", Collections.singletonList("card"));
+        // Convert amount to the smallest currency unit (e.g., cents for USD)
+        long amountInCents = amount.multiply(BigDecimal.valueOf(100)).longValueExact();
+        params.put("amount", amountInCents);
+        // Set the currency (e.g., "usd", "eur", "gbp")
+        params.put("currency", "usd"); // Adjust this based on your requirements
+        // Set the payment method types
+        params.put("payment_method_types", Collections.singletonList("card")); // Add more types if needed
 
+        // Create and return the payment intent
         return PaymentIntent.create(params);
     }
 }
